@@ -58,9 +58,17 @@ export class MoviesService {
       })
     );
   }
-  getMoviesByGenre(genreId: any, page: number) {
+  getTVGenres() {
+    return this.http.get<GenresDto>(`${this.baseUrl}/genre/tv/list?api_key=${this.apiKey}`).pipe(
+      switchMap((res) => {
+        return of(res.genres);
+      })
+    );
+  }
+
+  getMoviesByGenre(genreId: string, page: number) {
     return this.http
-      .get<MovieDto>(`${this.baseUrl}/discover/movie/?page=${page}&api_key=${this.apiKey}&with_genres=${genreId}`)
+      .get<MovieDto>(`${this.baseUrl}/discover/movie/?api_key=${this.apiKey}&page=${page}&with_genres=${genreId}`)
       .pipe(
         switchMap((res) => {
           return of(res.results);

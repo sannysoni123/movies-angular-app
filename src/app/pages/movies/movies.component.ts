@@ -29,13 +29,15 @@ export class MoviesComponent implements OnInit, OnDestroy {
       this.getPagedMovies(1, this.searchValue);
     }
   }
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    console.log('ngDestroy from movies component');
+  }
   getPagedMovies(page: number, searchKeyword?: string) {
     this.moviesService.searchMovies(page, searchKeyword).subscribe((movies) => {
       this.movies = movies;
     });
   }
-  getMoviesByGenre(genreId: any, page: number) {
+  getMoviesByGenre(genreId: string, page: number) {
     this.moviesService.getMoviesByGenre(genreId, page).subscribe((movies) => {
       this.movies = movies;
     });
