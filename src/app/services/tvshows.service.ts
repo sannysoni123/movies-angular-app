@@ -28,7 +28,7 @@ export class TvshowsService {
   }
   getTvShowsByGenre(genreId: string, page: number) {
     return this.http
-      .get<tvDto>(`${this.baseUrl}/discover/tv/?api_key=${this.apiKey}&page=${page}&with_genres=${genreId}`)
+      .get<tvDto>(`${this.baseUrl}/discover/tv?api_key=${this.apiKey}&page=${page}&with_genres=${genreId}`)
       .pipe(
         switchMap((res) => {
           return of(res.results);
