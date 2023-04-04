@@ -1,0 +1,25 @@
+@import '../../../styles/color-variables.scss';
+.stat {
+  display: flex;
+  margin-bottom: 15px;
+  .label {
+    width: 150px;
+    font-weight: bold;
+  }
+  .value {
+    color: $primaryColor;
+    font-size: medium;
+    width: 90%;
+  }
+}
+.rating {
+  display: flex;
+  align-items: center;
+  .app-icon {
+    margin-right: 5px;
+    color: #d4af37;
+  }
+  &-value {
+    color: $white;
+  }
+}

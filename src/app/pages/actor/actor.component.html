@@ -1,0 +1,63 @@
+<ng-container *ngIf="actor">
+  <div class="container">
+    <div class="grid">
+      <div class="col-12 md:col-3 lg:col-3">
+        <img class="poster" [src]="imagesSizes.medium + actor.profile_path" [alt]="actor.name" />
+      </div>
+      <div class="col-12 md:col-9 lg:col-9">
+        <h2>{{ actor.name }}</h2>
+        <div class="stat">
+          <div class="label">Birthday</div>
+          <div class="value">{{ actor.birthday ? (actor.birthday | date : 'dd MMM yyyy') : '-' }}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Imdb Id</div>
+          <div class="value">
+            <span *ngIf="actor.imdb_id"
+              ><a
+                style="color: #9fa8da"
+                target="_blank"
+                [href]="'https://www.imdb.com/name/' + actor.imdb_id + '/?ref_=nmls_pst'"
+                >{{ actor.imdb_id }}</a
+              ></span
+            >
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="label">Also Known as</div>
+          <div class="value">
+            <span *ngIf="actor.also_known_as.length == 0">-</span>
+            <span *ngFor="let name of actor.also_known_as">{{ name }}</span>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="label">known for department</div>
+          <div class="value">{{ actor.known_for_department }}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Popularity</div>
+          <div class="value">
+            <span class="rating"><span class="app-icon">star</span>{{ actor.popularity }}</span>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="label">Gender</div>
+          <div class="value">{{ actor.gender == 1 ? 'Female' : 'Male' }}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Birth Place</div>
+          <div class="value">
+            {{ actor.place_of_birth }}
+          </div>
+        </div>
+        <div class="stat">
+          <div class="label">Biography</div>
+          <div class="value">
+            <span class="m-3"> {{ actor.biography ? actor.biography : '-' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
