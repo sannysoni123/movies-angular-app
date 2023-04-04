@@ -66,12 +66,14 @@
 </p-tabView>
 <p-carousel *ngIf="tvCredits" [value]="tvCredits.cast" [numVisible]="5" [numScroll]="5" [circular]="false">
     <ng-template let-actor pTemplate="item">
+        <a class="cursor-pointer" [routerLink]="'/actor/'+actor.id">
         <div class="actor">
                     <img  *ngIf="actor.profile_path" [src]="imagesSizes.medium + actor.profile_path" [alt]="actor.name" />
                 <span>
                     {{ actor.name }}
                 </span>
-            </div>
+        </div>
+        </a>
     </ng-template>
 </p-carousel>
 </ng-container>

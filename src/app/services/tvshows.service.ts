@@ -51,4 +51,11 @@ export class TvshowsService {
   getTv(id: string) {
     return this.http.get<tv>(`${this.baseUrl}/tv/${id}?api_key=${this.apiKey}`);
   }
+  getTopRatedTVShows(totalCount: number = 12) {
+    return this.http.get<tvDto>(`${this.baseUrl}/tv/top_rated?api_key=${this.apiKey}`).pipe(
+      switchMap((res) => {
+        return of(res.results.slice(0, totalCount));
+      })
+    );
+  }
 }
